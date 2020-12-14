@@ -1,0 +1,10 @@
+#################################################################################################################################################################################
+# CCPP REPRO tests                                                                                                                                                              #
+#################################################################################################################################################################################
+
+COMPILE | CCPP=Y REPRO=Y SUITES=FV3_GSD_v0_drag_suite,FV3_GSD_v0_unified_ugwp_suite,FV3_GSD_v0                                     | standard    |                | fv3         |
+RUN     | fv3_ccpp_gsd                                                                                                             | standard    |                | fv3         |
+RUN     | fv3_ccpp_gsd_drag_suite                                                                                                  | standard    |                | fv3         |
+RUN     | fv3_ccpp_gsd_unified_ugwp                                                                                                | standard    |                |             |
+RUN     | fv3_ccpp_gsd_drag_suite_unified_ugwp                                                                                     | standard    |                |             |
+
