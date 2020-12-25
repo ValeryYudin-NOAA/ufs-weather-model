@@ -1,0 +1,50 @@
+DEC 22 2020
+
+SUITES=FV3_GFS_v16b_ugwpv1
+RT tests for FV3GFS-127L
+./ccpp/suites: suite_FV3_GFS_v16b_ugwpv1.xml
+
+
+command to create RT for C96 annd npz=127L
+
+in ./tests
+
+./rt_ugwpv1.sh -k -l rt_ccpp_fv3gfs_v16b_ugwpv1.conf -c fv3 > & rt.gsd_ugwpv1_1c.log &
+./rt_ugwpv1.sh -k -l rt_ccpp_fv3gfs_v16b_ugwpv1.conf -m > & rt.gsd_ugwpv1.1m.log &
+
+./tests/log_hera.intel_repr
+-rw-r--r-- 1 Valery.Yudin swpc 743499 Dec 24 03:44 compile_1.log
+-rw-r--r-- 1 Valery.Yudin swpc  27097 Dec 24 03:50 run_fv3_ccpp_gfsv16_ugwpv1_repro.log
+-rw-r--r-- 1 Valery.Yudin swpc   3192 Dec 24 03:50 rt_001_fv3_ccpp_gfsv16_ugwpv1_repro.log
+
+====================================
+cold start configuration:
+====================================
+./tests/tests/fv3_ccpp_gfsv16_ugwpv1   
+
+export RTPWD127=/scratch1/NCEPDEV/swpc/Valery.Yudin/noscrub/CCPP_GEOS     ! cold ICs-127L etc...
+
+export FV3_RUN=ccpp_gfsv16_ugwpv1_run.IN
+export CCPP_SUITE=FV3_GFS_v16b_ugwpv1
+export INPUT_NML=ccpp_v16_c96_ugwpv1.nml.IN
+
+====================================
+wam start configuration:
+====================================
+./tests/tests/fv3_ccpp_gfsv16_ugwpv1ws
+
+export FV3_RUN=ccpp_gfsv16_ugwpv1ws_run.IN
+export CCPP_SUITE=FV3_GFS_v16b_ugwpv1
+export INPUT_NML=ccpp_v16_c96_ugwpv1ws.nml.IN
+
+./rt_ugwpv1.sh -k -l rt_ccpp_fv3gfs_v16b_ugwpv1ws.conf -c fv3 > & rt.warm_ugwpv1_1c.log &
+./rt_ugwpv1.sh -k -l rt_ccpp_fv3gfs_v16b_ugwpv1ws.conf -m > & rt.warm_ugwpv1.1m.log &
+
+============================================================================================
+cold start gsl/develop
+2016-10-03 C96/64L
+RT are not accomplished errors inside new GSL-physics (GF, RUC, MP-Thompson) 
+============================================================================================
+CCPP_SUITE=FV3_GSD_ugwpv1_gsldrag_suite
+! 64L GSL-develop fv3_ccpp_gsd_ugwpv1/ccpp_gsdv1.nml.IN/ccpp_gsdv1_64_run.IN
+===========================================================================================
