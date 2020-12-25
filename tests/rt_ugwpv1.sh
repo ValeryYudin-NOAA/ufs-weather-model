@@ -488,8 +488,8 @@ if [[ $ROCOTO == true ]]; then
     COMPILE_QUEUE=dev_transfer
     ROCOTO_SCHEDULER=lsf
   elif [[ $MACHINE_ID = hera.* ]]; then
-    QUEUE=batch
-    COMPILE_QUEUE=batch
+    QUEUE=debug
+    COMPILE_QUEUE=debug
     ROCOTO_SCHEDULER=slurm
   elif [[ $MACHINE_ID = orion.* ]]; then
     QUEUE=debug
