@@ -1,5 +1,8 @@
 DEC 22 2020
 
+./compile.sh hera.intel 'CCPP=Y SUITES=FV3_GFS_v16b_ugwpv1' 1 YES N0
+
+
 SUITES=FV3_GFS_v16b_ugwpv1
 RT tests for FV3GFS-127L
 ./ccpp/suites: suite_FV3_GFS_v16b_ugwpv1.xml
@@ -48,3 +51,35 @@ RT are not accomplished errors inside new GSL-physics (GF, RUC, MP-Thompson)
 CCPP_SUITE=FV3_GSD_ugwpv1_gsldrag_suite
 ! 64L GSL-develop fv3_ccpp_gsd_ugwpv1/ccpp_gsdv1.nml.IN/ccpp_gsdv1_64_run.IN
 ===========================================================================================
+
+fixing bugs:
+
+drag_suite.meta: elvmax (intent in)
+drag_suite.F90 : accurate expression for dtdt -kinetic tem-re update
+
+                 git branch topic/wip     (1)
+               $ git reset --hard HEAD~3  (2)
+               $ git checkout topic/wip   (3)
+
+
+       Undo a commit and redo
+
+               $ git commit ...
+               $ git reset --soft HEAD^      (1)
+               $ edit                        (2)
+               $ git commit -a -c ORIG_HEAD  (3)
+
+       Undo commits permanently
+
+               $ git commit ...
+               $ git reset --hard HEAD~3   (1)
+
+
+git committ inside:
+
+/scratch1/NCEPDEV/swpc/Valery.Yudin/save/GSL_REPRO/ufs-weather-model/tests
+/scratch1/NCEPDEV/swpc/Valery.Yudin/save/GSL_REPRO/ufs-weather-model/FV3/atmos_cubed_sphere
+/scratch1/NCEPDEV/swpc/Valery.Yudin/save/GSL_REPRO/ufs-weather-model/FV3/gfsphysics/GFS_layer
+/scratch1/NCEPDEV/swpc/Valery.Yudin/save/GSL_REPRO/ufs-weather-model/FV3/ccpp/: config  suites physics
+
+
